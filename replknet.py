@@ -134,7 +134,7 @@ class ReparamLargeKernelConv(nn.Module):
                                      out_channels=self.lkb_origin.conv.out_channels,
                                      kernel_size=self.lkb_origin.conv.kernel_size, stride=self.lkb_origin.conv.stride,
                                      # padding is needed here to make sure the output size is the same as the original large kernel conv
-                                     padding=self.lkb_origin.conv.kernel_size // 2, dilation=self.lkb_origin.conv.dilation,
+                                     padding=self.lkb_origin.conv.kernel_size[0] // 2, dilation=self.lkb_origin.conv.dilation,
                                      groups=self.lkb_origin.conv.groups, bias=True)
         self.lkb_reparam.weight.data = eq_k
         self.lkb_reparam.bias.data = eq_b
